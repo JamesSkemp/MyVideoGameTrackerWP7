@@ -1,0 +1,71 @@
+﻿<phone:PhoneApplicationPage 
+	x:Class="MyVideoGameTracker.EditVideoGamePage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	FontSize="{StaticResource PhoneFontSizeNormal}"
+	Foreground="{StaticResource PhoneForegroundBrush}"
+	SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+	mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+	shell:SystemTray.IsVisible="True">
+
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!--TitlePanel contains the name of the application and page title-->
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,12,0,24">
+			<TextBlock x:Name="ApplicationTitle" Text="MY VIDEO GAME TRACKER" Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock x:Name="PageTitle" Text="edit game" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+		</StackPanel>
+
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<ScrollViewer>
+				<StackPanel x:Name="EditorPanel">
+					<TextBlock Height="30" HorizontalAlignment="Left" Margin="10,10,0,0" Text="Title" VerticalAlignment="Top" />
+					<TextBox Height="72" HorizontalAlignment="Left" Name="titleTextBox" Text="{Binding Title, Mode=TwoWay}" VerticalAlignment="Top" Width="460" />
+					<TextBlock Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Text="Console" VerticalAlignment="Top" />
+					<TextBox Height="72" HorizontalAlignment="Left" Name="consoleTextBox" Text="{Binding Console, Mode=TwoWay}" VerticalAlignment="Top" Width="460" />
+					<TextBlock Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Text="Notes" VerticalAlignment="Top" />
+					<TextBox Height="216" HorizontalAlignment="Left" Name="notesTextBox" Text="{Binding Notes, Mode=TwoWay}" VerticalAlignment="Top" Width="460" TextWrapping="Wrap" AcceptsReturn="True" />
+					<CheckBox Content="Own?" Height="72" HorizontalAlignment="Left" Margin="10,10,0,0" Name="ownCheckBox" VerticalAlignment="Top" IsChecked="{Binding Own, Mode=TwoWay}" />
+					<!-- todo - purchase -->
+					<TextBlock Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Text="Purchase Date" VerticalAlignment="Top" />
+					<toolkit:DatePicker Name="purchaseDatePicker" Value="{Binding PurchaseDate, Mode=TwoWay}" Width="460" HorizontalAlignment="Left" />
+					<TextBlock Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Text="Purchase Price" VerticalAlignment="Top" />
+					<TextBox Height="72" HorizontalAlignment="Left" Name="purchasePriceTextBox" Text="{Binding PurchasePrice, Mode=TwoWay}" VerticalAlignment="Top" Width="460" InputScope="Number" />
+					<TextBlock Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Text="Purchase Place" VerticalAlignment="Top" />
+					<TextBox Height="72" HorizontalAlignment="Left" Name="purchasePlaceTextBox" Text="{Binding PurchasePlace, Mode=TwoWay}" VerticalAlignment="Top" Width="460" />
+					<!-- todo - sell -->
+					<TextBlock Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Text="Sell Date" VerticalAlignment="Top" />
+					<toolkit:DatePicker Name="sellDatePicker" Value="{Binding SellDate, Mode=TwoWay}" Width="460" HorizontalAlignment="Left" />
+					<TextBlock Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Text="Sell Price" VerticalAlignment="Top" />
+					<TextBox Height="72" HorizontalAlignment="Left" Name="sellPriceTextBox" Text="{Binding SellPrice, Mode=TwoWay}" VerticalAlignment="Top" Width="460" InputScope="Number" />
+					<TextBlock Height="30" HorizontalAlignment="Left" Margin="10,0,0,0" Text="Sell Place" VerticalAlignment="Top" />
+					<TextBox Height="72" HorizontalAlignment="Left" Name="sellPlaceTextBox" Text="{Binding SellPlace, Mode=TwoWay}" VerticalAlignment="Top" Width="460" />
+					<CheckBox Content="Is Add-on/DLC" Height="72" HorizontalAlignment="Left" Margin="10,10,0,0" Name="addOnCheckBox" VerticalAlignment="Top" IsChecked="{Binding AddOn, Mode=TwoWay}" />
+					<CheckBox Content="Electronic/Download" Height="72" HorizontalAlignment="Left" Margin="10,10,0,0" Name="electronicCheckBox" VerticalAlignment="Top" IsChecked="{Binding Electronic, Mode=TwoWay}" />
+					<CheckBox Content="Purchased Used" Height="72" HorizontalAlignment="Left" Margin="10,10,0,0" Name="usedCheckBox" VerticalAlignment="Top" IsChecked="{Binding Used, Mode=TwoWay}" />
+					<CheckBox Content="Beat/Finished" Height="72" HorizontalAlignment="Left" Margin="10,10,0,0" Name="beatCheckBox" VerticalAlignment="Top" IsChecked="{Binding Beat, Mode=TwoWay}" />
+				</StackPanel>
+			</ScrollViewer>
+		</Grid>
+	</Grid>
+ 
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar IsVisible="True">
+			<shell:ApplicationBarIconButton IconUri="/Images/appbar.save.rest.png" Text="Save" Click="saveEntry"/>
+			<shell:ApplicationBarIconButton IconUri="/Images/appbar.cancel.rest.png" Text="Cancel" Click="cancelEntry"/>
+			<shell:ApplicationBarIconButton IconUri="/Images/appbar.delete.rest.png" Text="Delete" Click="deleteEntry"/>
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>
